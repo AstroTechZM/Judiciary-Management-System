@@ -1,0 +1,27 @@
+Dashboard(home,quick stats,recent activity, announcements)
+
+case management(register new cases,view all cases, search case by id/name, update case status(clerk/judge), assign case to judge(clerk/admin), case history&Timeline view)
+
+court Scheduling(view calender, assign hearing dates(clerk),upcoming hearings,adjourn(clerk/judge), my hearings(judge/lawyer)
+
+Document management(upload new document,view/download documents,document version history,digitary sign documents(judge/authorised),seal/stamp(clerk/judge))
+
+efiling(submit legal documents(lawyers/public),track filing status(layers/public),validate incoming filings(clerk/admin)
+
+Users&roles(my profile,change password, Manage users(admin),assign roles(admin))
+
+judge and staff allocation(view judge availability(clerk/admin),assign judge to case(clerk),staff activity logs)
+
+tasks(view task queue(clerk/judge),automated alerts, task approval/rejection,workflow progress reminder)
+
+search& public access--all users--(public case search,view judgements,legal reference documents,downloadable forms)
+
+reports and analytics(generate reports,view caseloads,perfomance dashboards(admins) export to pdf,excel)
+
+logs(audit logs,session logs,system errors,user login history)
+
+settings&Admin(system configuration, notification preferences,email/sms template manager,backup&restore(admin0 api keys/integration settings)
+
+help&support(user manual,FAQs,contact IT Support,feedback/suggestion box)
+
+logout
