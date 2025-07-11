@@ -1,0 +1,181 @@
+.root {
+    -fx-background-color: white;
+}
+.tab-pane {
+    -fx-background-color: rgba(30,31,32,255);
+}
+
+.tab-content-area {
+    -fx-background-color: white;
+}
+
+.tab-pane .tab-header-area {
+    -fx-background-color: rgba(30,31,32,255);
+}
+.tab{
+    -fx-background-color: rgba(30,31,32,255);
+}
+.border-pane{
+    -fx-background-color: rgba(30,31,32,255);
+}
+.tab-pane:left > .tab-header-area {
+    -fx-pref-width: 350px;
+}
+.tab-pane .tab {
+    -fx-pref-height: 200px;
+    -fx-min-height: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* General Text Styling */
+.label {
+    -fx-text-fill: #e0e0e0; /* Light gray for most labels */
+}
+
+/* Button Base Style */
+.button {
+    -fx-background-color: #5b6470;
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 8px 15px;
+    -fx-cursor: hand; /* Pointer cursor on hover */
+}
+.button:hover {
+    -fx-background-color: #6c757d;
+}
+.button:pressed {
+    -fx-background-color: #4a5059;
+}
+
+/* TextField Base Style */
+.text-field {
+    -fx-background-color: #4a5059;
+    -fx-text-fill: #e0e0e0;
+    -fx-prompt-text-fill: #b0b0b0;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 8px 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.text-field:focused {
+    -fx-background-color: #5b6470;
+    -fx-border-color: #007bff; /* Highlight on focus */
+    -fx-border-width: 1px;
+}
+
+/* TextArea Base Style */
+.text-area {
+    -fx-background-color: #4a5059;
+    -fx-text-fill: #e0e0e0;
+    -fx-prompt-text-fill: #b0b0b0;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-padding: 8px 10px;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.text-area .content {
+    -fx-background-color: #4a5059; /* Inner content area */
+    -fx-padding: 0; /* Remove default padding of content */
+}
+.text-area:focused {
+    -fx-background-color: #5b6470;
+    -fx-border-color: #007bff;
+    -fx-border-width: 1px;
+}
+
+/* ListView Base Style */
+.list-view {
+    -fx-background-color: #4a5059;
+    -fx-border-color: transparent;
+    -fx-background-insets: 0;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.list-view .scroll-bar:vertical .increment-button,
+.list-view .scroll-bar:vertical .decrement-button,
+.list-view .scroll-bar:horizontal .increment-button,
+.list-view .scroll-bar:horizontal .decrement-button {
+    -fx-background-color: transparent;
+    -fx-padding: 0;
+}
+.list-view .scroll-bar .thumb {
+    -fx-background-color: #6c757d; /* Scrollbar thumb color */
+    -fx-background-insets: 0;
+    -fx-background-radius: 5px;
+}
+.list-view .scroll-bar .track {
+    -fx-background-color: #3e4450; /* Scrollbar track color */
+    -fx-background-insets: 0;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+}
+.list-view .list-cell {
+    -fx-background-color: #4a5059;
+    -fx-text-fill: #e0e0e0;
+    -fx-padding: 8px 10px;
+}
+.list-view .list-cell:filled:selected, .list-view .list-cell:filled:selected:hover {
+    -fx-background-color: #007bff; /* Selection color */
+    -fx-text-fill: white;
+}
+.list-view .list-cell:filled:hover {
+    -fx-background-color: #5b6470; /* Hover color */
+    -fx-text-fill: white;
+}
