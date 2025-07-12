@@ -179,3 +179,51 @@
     -fx-background-color: #5b6470; /* Hover color */
     -fx-text-fill: white;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* Custom styles for appointment groups in Agenda */
+.agenda .hearing-trial {
+    -fx-background-color: #ffcccc; /* Light red */
+}
+.agenda .hearing-motion {
+    -fx-background-color: #ccddff; /* Light blue */
+}
+.agenda .hearing-status {
+    -fx-background-color: #ccffcc; /* Light green */
+}
+.agenda .hearing-default {
+    -fx-background-color: #e0e0e0; /* Light gray */
+}

@@ -4,27 +4,27 @@ import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.*;
-import javafx.scene.image.*;
+import javafx.scene.image.*; // Keep Image and ImageView
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.geometry.Side;
-import org.controlsfx.glyphfont.GlyphFont;
-import org.controlsfx.glyphfont.GlyphFontRegistry;
-import org.controlsfx.glyphfont.Glyph;
-import javafx.scene.Node; // Import Node
-
-
+// REMOVE THESE GLYPH-RELATED IMPORTS:
+// import org.controlsfx.glyphfont.GlyphFont;
+// import org.controlsfx.glyphfont.GlyphFontRegistry;
+// import org.controlsfx.glyphfont.Glyph;
+import javafx.scene.Node; // Keep Node
 
 public class MainView extends Application {
-    private static final int ICON_SIZE = 25;
+    private static final int ICON_SIZE = 35;
     private static final int LARGE_ICON_SIZE = 50;
     private static final Color PRIMARY_COLOR = Color.rgb(73, 88, 181);
 
     @Override
     public void start(Stage primaryStage) {
-        // Register the Material Symbols font once
+        // REMOVE THIS GLYPH FONT REGISTRATION BLOCK:
+        /*
         try {
             GlyphFontRegistry.register(new GlyphFont("MaterialSymbols", // A unique name for your font
                         16, // Default font size (can be overridden per icon)
@@ -35,6 +35,7 @@ public class MainView extends Application {
             System.err.println("Failed to register Material Symbols font: " + e.getMessage());
             // Handle error, e.g., use fallback icons or log it
         }
+        */
 
         BorderPane root = new BorderPane();
         root.setTop(createMenuBar());
@@ -67,7 +68,7 @@ public class MainView extends Application {
         astro.setTextFill(PRIMARY_COLOR);
 
         // Login icon
-        ImageView loginIcon = createIconView("/lib/logIn.jpeg", ICON_SIZE);
+        ImageView loginIcon = createIconView("/lib/account.png", ICON_SIZE);
 
         Region spacer1 = new Region();
         Region spacer2 = new Region();
@@ -87,45 +88,40 @@ public class MainView extends Application {
     private TabPane createSideMenu() {
         TabPane tabPane = new TabPane();
         tabPane.setSide(Side.LEFT);
-        
+        CaseManagement caseManagement = new CaseManagement();
+        CourtScheduling courtScheduling = new CourtScheduling();
 
-        addTab(tabPane, "Dashboard", "/lib/dashboard.svg");
-        addTab(tabPane, "Manage Cases", "/lib/registration.png");
-        addTab(tabPane, "Court Schedules", "/lib/workload.png");
-        addTab(tabPane, "past Cases", "/lib/pendingCase.png");
-        addTab(tabPane, "Profile", "/lib/account.png");
-        addTab(tabPane, "Logs", "/lib/at.png");
-        addTab(tabPane, "Logout", "/lib/at.png");
+        // Now passing the image path directly to addTab, which will use ImageView
+        addTab(tabPane, "Dashboard", "/lib/dashboard.png", caseManagement.getView());
+        addTab(tabPane, "Manage Cases", "/lib/registration.png", caseManagement.getView());
+        addTab(tabPane, "Court Schedules", "/lib/workload.png", courtScheduling.getView());
+        //addTab(tabPane, "past Cases", "/lib/pendingCase.png", courtScheduling.getView());
+        //addTab(tabPane, "Profile", "/lib/account.png", courtScheduling.getView());
+        //addTab(tabPane, "Logs", "/lib/at.png", courtScheduling.getView());
+        //addTab(tabPane, "Logout", "/lib/at.png", courtScheduling.getView());
 
         return tabPane;
     }
 
-    private void addTab(TabPane pane, String tooltip, String iconPath) {
+    // MODIFIED addTab method to use ImageView
+    private void addTab(TabPane pane, String tooltip, String iconPath, Node contentShow) { // iconPath is now truly a path
         Tab tab = new Tab();
         tab.setTooltip(new Tooltip(tooltip));
-        // Create the icon using Glyph
-    // The size() method directly controls the size and it scales perfectly.
-        Node iconNode = null;
-        try {
-            iconNode = new Glyph("MaterialSymbols", tooltip)
-                            .size(ICON_SIZE) // Use ICON_SIZE or desired size
-                            .color(PRIMARY_COLOR); // Set color if desired
-        } catch (Exception e) {
-            System.err.println("Could not create glyph for " + tooltip + ": " + e.getMessage());
-            iconNode = new Label("?"); // Fallback if glyph fails
-        }
+
+        // Create the icon using ImageView, reusing the createIconView helper
+        ImageView iconImageView = createIconView(iconPath, ICON_SIZE);
 
         VBox content = new VBox(10); // 10px spacing between children
-        content.getChildren().addAll(iconNode, new Label(tooltip));
+        content.getChildren().addAll(iconImageView, new Label(tooltip)); // Add the ImageView
         content.setAlignment(Pos.CENTER);
 
         tab.setGraphic(content);
         tab.setClosable(false);
-        // Create proper content container instead of Label
-        StackPane contentPane = new StackPane();
-        contentPane.setMinSize(600, 500); 
-        CaseManagement caseManagement = new CaseManagement();
-        tab.setContent(caseManagement.getView());
+        
+        // The StackPane contentPane was unnecessary here as contentShow is already a Node
+        // StackPane contentPane = new StackPane();
+        // contentPane.setMinSize(600, 500); 
+        tab.setContent(contentShow); // Set the dynamically provided content
         pane.getTabs().add(tab);
     }
 
@@ -134,14 +130,16 @@ public class MainView extends Application {
         // Load image from classpath
         java.net.URL imageUrl = getClass().getResource(path);
         if (imageUrl == null) {
-            System.err.println("Error loading icon: " + path);
-            return new ImageView();
+            System.err.println("Error loading icon: " + path + " - URL is null.");
+            // Return a placeholder or empty ImageView if image not found
+            return new ImageView(new Image(getClass().getResourceAsStream("/lib/default.png"), size, size, true, true)); // Fallback image
         }
         Image img = new Image(imageUrl.toExternalForm(), size, size, true, true);
         return new ImageView(img);
     } catch (Exception e) {
-        System.err.println("Error loading icon: " + path);
-        return new ImageView();
+        System.err.println("Error loading icon: " + path + " - Exception: " + e.getMessage());
+        // Return a placeholder or empty ImageView on exception
+        return new ImageView(new Image(getClass().getResourceAsStream("/lib/default.png"), size, size, true, true)); // Fallback image
     }
 }
 
