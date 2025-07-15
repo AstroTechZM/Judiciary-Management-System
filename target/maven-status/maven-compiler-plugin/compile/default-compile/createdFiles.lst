@@ -3,6 +3,7 @@ com/astro/App.class
 DocumentManagement.class
 com/astro/CourtScheduling$1.class
 RoundedPanel.class
+com/astro/Card.class
 Help.class
 RoundedButton.class
 com/astro/CourtScheduling$2.class
@@ -20,7 +21,7 @@ com/astro/CaseManagement$2.class
 Profile.class
 Settings.class
 StaffAllocation.class
+com/astro/Dashboard.class
 Reports.class
-Dashboard.class
 com/astro/CaseManagement$1.class
 com/astro/CourtScheduling.class
